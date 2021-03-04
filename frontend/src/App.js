@@ -68,7 +68,9 @@ function App() {
 
   const deleteHandler = (id) => {
     // console.log(id);
-    fetch(`${process.env.React_App_BACKEND_URL}/delete/${id}`)
+    fetch(`${process.env.React_App_BACKEND_URL}/delete/${id}`, {
+      method: "delete",
+    })
       .then((res) => res.json())
       .then((res) => {
         if (res.error) {
