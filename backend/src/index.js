@@ -8,15 +8,8 @@ const Router = require("../Routes/Router");
 dotenv.config();
 
 //middlewares
-
 app.use(express.static("public"));
 app.use(express.json());
-
-app.use(
-  cors({
-    origin: "*",
-  })
-);
 
 app.use("/", Router);
 

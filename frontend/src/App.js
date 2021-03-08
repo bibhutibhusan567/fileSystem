@@ -9,7 +9,7 @@ function App() {
   const [message, setMessage] = useState();
 
   useEffect(() => {
-    fetch(`${process.env.React_App_BACKEND_URL}/data`)
+    fetch(`/data`)
       .then((res) => res.json())
       .then((res) => {
         if (res.error) {
@@ -33,7 +33,7 @@ function App() {
       formdata.append("file", file);
       formdata.append("fileName", file.name);
 
-      fetch(`${process.env.React_App_BACKEND_URL}/newfile`, {
+      fetch(`/newfile`, {
         method: "post",
         body: formdata,
       })
@@ -51,7 +51,7 @@ function App() {
   };
 
   const downloadHandler = (fileName) => {
-    fetch(`${process.env.React_App_BACKEND_URL}/download/${fileName}`)
+    fetch(`/download/${fileName}`)
       // 1. Convert the data into 'blob'
       .then((res) => res.blob())
       .then((blob) => {
@@ -68,7 +68,7 @@ function App() {
 
   const deleteHandler = (id) => {
     // console.log(id);
-    fetch(`${process.env.React_App_BACKEND_URL}/delete/${id}`, {
+    fetch(`/delete/${id}`, {
       method: "delete",
     })
       .then((res) => res.json())
